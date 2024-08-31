@@ -5,7 +5,7 @@ function Navbar() {
 			<div className='navbarMenu'>
 				<a href='/'>Home</a>
 				<a href='/store'>Store</a>
-				<a href='/cart'>cart</a>
+				<a href='/cart'>Cart</a>
 				<a href='/about'>About</a>
 			</div>
 		</nav>
