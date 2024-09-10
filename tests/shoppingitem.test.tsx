@@ -65,9 +65,7 @@ describe('ShoppingItem component. Informational only.', () => {
 				/>
 			);
 
-			const buyBuyButton = screen.getByRole('button', {
-				name: /buy/i,
-			});
+			const buyBuyButton = screen.getByText('Buy');
 
 			await user.click(buyBuyButton);
 
@@ -84,9 +82,7 @@ describe('ShoppingItem component. Informational only.', () => {
 				/>
 			);
 
-			const increaseButton = screen.getByRole('button', {
-				name: '+',
-			});
+			const increaseButton = screen.getByText('+');
 
 			await user.click(increaseButton);
 
@@ -103,9 +99,7 @@ describe('ShoppingItem component. Informational only.', () => {
 				/>
 			);
 
-			const decreaseButton = screen.getByRole('button', {
-				name: '-',
-			});
+			const decreaseButton = screen.getByText('-');
 
 			await user.click(decreaseButton);
 
