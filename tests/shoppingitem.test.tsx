@@ -1,5 +1,6 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
 import ShoppingItem from '../src/components/ShoppingItem';
@@ -49,5 +50,66 @@ describe('ShoppingItem component. Informational only.', () => {
 			/>
 		);
 		expect(screen.getByText('Quantity: 1')).toBeVisible();
+	});
+
+	describe('ShoppingItem component. Not informational only.', () => {
+		test('Should call handleBuyButton when clicked', async () => {
+			const handleBuyButton = vi.fn();
+			const user = userEvent.setup();
+			render(
+				<ShoppingItem
+					title='TestItem'
+					quantity={1}
+					informationalOnly={false}
+					handleBuyButtonLogic={handleBuyButton}
+				/>
+			);
+
+			const buyBuyButton = screen.getByRole('button', {
+				name: /buy/i,
+			});
+
+			await user.click(buyBuyButton);
+
+			expect(handleBuyButton).toHaveBeenCalled();
+		});
+
+		test('Should increase quantity when the user clicks the + button', async () => {
+			const user = userEvent.setup();
+			render(
+				<ShoppingItem
+					title='TestItem'
+					quantity={1}
+					informationalOnly={false}
+				/>
+			);
+
+			const increaseButton = screen.getByRole('button', {
+				name: '+',
+			});
+
+			await user.click(increaseButton);
+
+			expect(screen.getByText('Quantity: 2')).toBeVisible();
+		});
+
+		test('Should decrease quantity when the user clicks the - button', async () => {
+			const user = userEvent.setup();
+			render(
+				<ShoppingItem
+					title='TestItem'
+					quantity={2}
+					informationalOnly={false}
+				/>
+			);
+
+			const decreaseButton = screen.getByRole('button', {
+				name: '-',
+			});
+
+			await user.click(decreaseButton);
+
+			expect(screen.getByText('Quantity: 1')).toBeVisible();
+		});
 	});
 });
