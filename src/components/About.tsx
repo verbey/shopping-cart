@@ -8,11 +8,11 @@ function About() {
 				<a href='https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart'>
 					the Odin Project course
 				</a>
-				. See
+				. See{' '}
 				<a href='https://codeberg.org/Verbiturum/shopping-card'>
-					the code and README.md
+					the code and README.md{' '}
 				</a>
-				for more informatin.
+				for more information.
 			</p>
 		</main>
 	);
