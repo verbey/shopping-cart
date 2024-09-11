@@ -1,10 +1,11 @@
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
+// import { useState } from 'react';
 
 function App() {
 	return (
 		<>
-			<Navbar />
+			<Navbar shoppingCartItems={0} />
 			<Outlet />
 		</>
 	);
