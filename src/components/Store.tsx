@@ -17,6 +17,7 @@ interface StoreData {
 function Store() {
 	const [storeItems, setStoreItems] = useState<StoreData[] | null>(null);
 	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		fetch('https://fakestoreapi.com/products?limit=10', { mode: 'cors' })
@@ -27,12 +28,15 @@ function Store() {
 			.catch((error) => {
 				console.log(error);
 				setError(error);
-			});
+			})
+			.finally(() => setLoading(false));
 	}, []);
 
 	return (
 		<main>
 			<h2>Store</h2>
+			{loading && <p className='loadingText'>Loading...</p>}
+
 			{storeItems && (
 				<ul>
 					{storeItems.map((item) => (
