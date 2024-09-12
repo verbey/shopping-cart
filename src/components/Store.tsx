@@ -53,7 +53,7 @@ function Store() {
 			)}
 
 			{error && (
-				<p>
+				<p className='errorText'>
 					Failed to load store items. See the console for more
 					information.
 				</p>
