@@ -51,17 +51,47 @@ function ShoppingItem(props: ShoppingItemProps) {
 				<button
 					className='buyButton'
 					onClick={() => {
+						// That's a pretty cursed function but I'm not really sure how to simplify it
+						// So I let it be. At least, for now. Instead, I'll explain weird moments briefly
+						// how it works here, in the comments.
 						if (props.setShoppingCartItems) {
 							if (props.shoppingCartItems) {
-								props.setShoppingCartItems([
-									...props.shoppingCartItems,
-									{
-										title: props.title,
-										imageg: props.image,
-										quantity: quantity,
-									},
-								]);
-							} else {
+								// Deduplication logic. Searches if an item with the same title is already
+								// in the shopping cart items array
+								if (
+									props.shoppingCartItems.find(
+										(item: ShoppingCartItems) =>
+											item.title === props.title
+									)
+								) {
+									// If it is, iterates over the array and increments the quantity
+									props.setShoppingCartItems(
+										props.shoppingCartItems.map((item) =>
+											item.title === props.title
+												? {
+														...item,
+														quantity:
+															item.quantity +
+															quantity,
+												  }
+												: item
+										)
+									);
+								}
+								// If it isn't, adds it to the shopping cart items array.
+								else {
+									props.setShoppingCartItems([
+										...props.shoppingCartItems,
+										{
+											title: props.title,
+											imageg: props.image,
+											quantity: quantity,
+										},
+									]);
+								}
+							}
+							// If shoppingCartItems is null, sets it with an array with 1 item
+							else {
 								props.setShoppingCartItems([
 									{
 										title: props.title,
