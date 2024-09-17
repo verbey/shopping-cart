@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 interface ShoppingCartItems {
 	title: string;
-	imageg?: string;
+	image?: string;
 	quantity: number;
 }
 

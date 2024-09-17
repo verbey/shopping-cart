@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 interface ShoppingCartItems {
 	title: string;
-	imageg?: string;
+	image?: string;
 	quantity: number;
 }
 
@@ -84,7 +84,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 										...props.shoppingCartItems,
 										{
 											title: props.title,
-											imageg: props.image,
+											image: props.image,
 											quantity: quantity,
 										},
 									]);
@@ -95,7 +95,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 								props.setShoppingCartItems([
 									{
 										title: props.title,
-										imageg: props.image,
+										image: props.image,
 										quantity: quantity,
 									},
 								]);
