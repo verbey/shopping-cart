@@ -1,11 +1,18 @@
 import { useState } from 'react';
 
+interface ShoppingCartItems {
+	title: string;
+	imageg?: string;
+	quantity: number;
+}
+
 interface ShoppingItemProps {
 	title: string;
 	image?: string;
 	quantity: number;
 	informationalOnly: boolean;
-	handleBuyButtonLogic?: () => void;
+	shoppingCartItems?: ShoppingCartItems[] | null;
+	setShoppingCartItems?: (items: ShoppingCartItems[]) => void;
 }
 
 function ShoppingItem(props: ShoppingItemProps) {
@@ -43,7 +50,28 @@ function ShoppingItem(props: ShoppingItemProps) {
 			{!props.informationalOnly && (
 				<button
 					className='buyButton'
-					onClick={props.handleBuyButtonLogic}
+					onClick={() => {
+						if (props.setShoppingCartItems) {
+							if (props.shoppingCartItems) {
+								props.setShoppingCartItems([
+									...props.shoppingCartItems,
+									{
+										title: props.title,
+										imageg: props.image,
+										quantity: quantity,
+									},
+								]);
+							} else {
+								props.setShoppingCartItems([
+									{
+										title: props.title,
+										imageg: props.image,
+										quantity: quantity,
+									},
+								]);
+							}
+						}
+					}}
 				>
 					Buy
 				</button>
