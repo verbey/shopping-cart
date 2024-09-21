@@ -17,8 +17,9 @@ interface StoreData {
 
 interface ShoppingCartItems {
 	title: string;
-	imageg?: string;
+	image?: string;
 	quantity: number;
+	price: number;
 }
 
 type ShoppingCartItemsContext = [
@@ -59,6 +60,7 @@ function Store() {
 								title={item.title}
 								image={item.image}
 								quantity={1}
+								price={item.price}
 								informationalOnly={false}
 								shoppingCartItems={shoppingCartItems}
 								setShoppingCartItems={setShoppingCartItems}

@@ -4,12 +4,14 @@ interface ShoppingCartItems {
 	title: string;
 	image?: string;
 	quantity: number;
+	price: number;
 }
 
 interface ShoppingItemProps {
 	title: string;
 	image?: string;
 	quantity: number;
+	price: number;
 	informationalOnly: boolean;
 	shoppingCartItems?: ShoppingCartItems[] | null;
 	setShoppingCartItems?: (items: ShoppingCartItems[]) => void;
@@ -31,6 +33,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 			<div className='shoppingItemTitlte'>{props.title}</div>
 			{props.image && <img src={props.image} alt={props.title} />}
 			<div className='quantity'>Quantity: {quantity}</div>
+			<div className='price'>Price: {props.price}</div>
 			{!props.informationalOnly && (
 				<div className='quantityControlButtons'>
 					<button
@@ -86,6 +89,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 											title: props.title,
 											image: props.image,
 											quantity: quantity,
+											price: props.price,
 										},
 									]);
 								}
@@ -97,6 +101,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 										title: props.title,
 										image: props.image,
 										quantity: quantity,
+										price: props.price,
 									},
 								]);
 							}

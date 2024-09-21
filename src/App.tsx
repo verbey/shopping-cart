@@ -6,6 +6,7 @@ interface ShoppingCartItems {
 	title: string;
 	image?: string;
 	quantity: number;
+	price: number;
 }
 
 function App() {
