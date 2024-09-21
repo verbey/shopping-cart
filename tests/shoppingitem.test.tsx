@@ -11,6 +11,7 @@ describe('ShoppingItem component. Informational only.', () => {
 			<ShoppingItem
 				title='TestItem'
 				quantity={1}
+				price={10}
 				informationalOnly={true}
 			/>
 		);
@@ -20,6 +21,7 @@ describe('ShoppingItem component. Informational only.', () => {
 			<ShoppingItem
 				title='TestItem'
 				quantity={1}
+				price={10}
 				informationalOnly={true}
 			/>
 		);
@@ -32,6 +34,7 @@ describe('ShoppingItem component. Informational only.', () => {
 				title='TestItem'
 				quantity={1}
 				informationalOnly={true}
+				price={10}
 				image='https://picsum.photos/id/237/200/300'
 			/>
 		);
@@ -47,63 +50,80 @@ describe('ShoppingItem component. Informational only.', () => {
 				title='TestItem'
 				quantity={1}
 				informationalOnly={true}
+				price={10}
 			/>
 		);
 		expect(screen.getByText('Quantity: 1')).toBeVisible();
 	});
 
-	describe('ShoppingItem component. Not informational only.', () => {
-		test('Should call handleBuyButton when clicked', async () => {
-			const handleBuyButton = vi.fn();
-			const user = userEvent.setup();
-			render(
-				<ShoppingItem
-					title='TestItem'
-					quantity={1}
-					informationalOnly={false}
-					handleBuyButtonLogic={handleBuyButton}
-				/>
-			);
+	test('Displays price', () => {
+		render(
+			<ShoppingItem
+				title='TestItem'
+				quantity={1}
+				price={10}
+				informationalOnly={true}
+			/>
+		);
+		expect(screen.getByText('Price: 10')).toBeVisible();
+	});
+});
 
-			const buyBuyButton = screen.getByText('Buy');
+describe('ShoppingItem component. Not informational only.', () => {
+	test('Should call handleBuyButton when clicked', async () => {
+		const handleBuyButton = vi.fn();
+		const user = userEvent.setup();
+		render(
+			<ShoppingItem
+				title='TestItem'
+				quantity={1}
+				price={10}
+				informationalOnly={false}
+				shoppingCartItems={null}
+				setShoppingCartItems={handleBuyButton}
+			/>
+		);
 
-			await user.click(buyBuyButton);
+		const buyBuyButton = screen.getByText('Buy');
 
-			expect(handleBuyButton).toHaveBeenCalled();
-		});
+		await user.click(buyBuyButton);
 
-		test('Should increase quantity when the user clicks the + button', async () => {
-			const user = userEvent.setup();
-			render(
-				<ShoppingItem
-					title='TestItem'
-					quantity={1}
-					informationalOnly={false}
-				/>
-			);
+		expect(handleBuyButton).toHaveBeenCalled();
+	});
 
-			const increaseButton = screen.getByText('+');
+	test('Should increase quantity when the user clicks the + button', async () => {
+		const user = userEvent.setup();
+		render(
+			<ShoppingItem
+				title='TestItem'
+				quantity={1}
+				price={10}
+				informationalOnly={false}
+			/>
+		);
 
-			await user.click(increaseButton);
+		const increaseButton = screen.getByText('+');
 
-			expect(screen.getByText('Quantity: 2')).toBeVisible();
-		});
+		await user.click(increaseButton);
 
-		test('Should decrease quantity when the user clicks the - button', async () => {
-			const user = userEvent.setup();
-			render(
-				<ShoppingItem
-					title='TestItem'
-					quantity={2}
-					informationalOnly={false}
-				/>
-			);
+		expect(screen.getByText('Quantity: 2')).toBeVisible();
+	});
 
-			const decreaseButton = screen.getByText('-');
+	test('Should decrease quantity when the user clicks the - button', async () => {
+		const user = userEvent.setup();
+		render(
+			<ShoppingItem
+				title='TestItem'
+				quantity={2}
+				price={10}
+				informationalOnly={false}
+			/>
+		);
 
-			await user.click(decreaseButton);
+		const decreaseButton = screen.getByText('-');
 
-			expect(screen.getByText('Quantity: 1')).toBeVisible();
-		});
+		await user.click(decreaseButton);
+
+		expect(screen.getByText('Quantity: 1')).toBeVisible();
 	});
 });

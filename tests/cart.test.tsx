@@ -7,7 +7,11 @@ import Cart from '../src/components/Cart';
 describe('Cart component', () => {
 	test('Displays items if there are any', () => {
 		render(
-			<Cart shoppingCartItems={[{ title: 'Test Item', quantity: 1 }]} />
+			<Cart
+				shoppingCartItems={[
+					{ title: 'Test Item', quantity: 1, price: 10 },
+				]}
+			/>
 		);
 		expect(screen.getByText('Test Item')).toBeInTheDocument();
 	});
