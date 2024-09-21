@@ -15,6 +15,11 @@ type ShoppingCartItemsContext = [
 
 function Cart() {
 	const [shoppingCartItems] = useOutletContext<ShoppingCartItemsContext>();
+	const totalPrice = shoppingCartItems?.reduce(
+		(accumulator, currentValue) =>
+			accumulator + currentValue.price * currentValue.quantity,
+		0
+	);
 	return (
 		<div className='cartContainer'>
 			<div className='cartItems'>
@@ -30,6 +35,7 @@ function Cart() {
 						/>
 					))}
 			</div>
+			<div className='totalPrice'>Total: {totalPrice}</div>
 			<button type='button'>Checkout</button>
 		</div>
 	);
