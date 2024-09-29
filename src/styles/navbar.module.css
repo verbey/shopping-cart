@@ -19,11 +19,13 @@ nav {
 }
 
 .link {
+	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo,
+		Consolas, 'DejaVu Sans Mono', monospace;
 	font-size: 1.5rem;
 	text-decoration: none;
 	color: var(--text);
 	background-color: var(--secondary);
-	padding: 4px;
+	padding: 4px 8px;
 	border-radius: 8px;
 }
 
