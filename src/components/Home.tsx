@@ -1,7 +1,9 @@
+import styles from '../styles/infoComponent.module.css';
+
 function Home() {
 	return (
-		<main>
-			<h2>Home</h2>
+		<main className={styles.main}>
+			<h2 className={styles.title}>Home</h2>
 			<p>This is the Home page</p>
 			<p>
 				You can shop for more items if you go to the Store page. You can
