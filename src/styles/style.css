@@ -1,6 +1,9 @@
 @import url('colors.css');
 
 body {
+	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans',
+		Arial, sans-serif;
+	font-weight: normal;
 	color: var(--text);
 	background-color: var(--background);
 }
