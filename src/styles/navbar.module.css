@@ -1,0 +1,40 @@
+nav {
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+}
+
+.navbarMenu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h1 {
+	font-size: 4rem;
+	font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans',
+		source-sans-pro, sans-serif;
+	font-weight: normal;
+	text-align: center;
+}
+
+.link {
+	font-size: 1.5rem;
+	text-decoration: none;
+	color: var(--text);
+	background-color: var(--secondary);
+	padding: 4px;
+	border-radius: 8px;
+}
+
+.link:hover {
+	filter: brightness(90%);
+}
+
+.link:focus {
+	filter: brightness(75%);
+}
+
+.shoppingCartItems {
+	font-size: 1.5rem;
+}
