@@ -10,11 +10,11 @@ nav {
 	align-items: center;
 }
 
-h1 {
+.documentName {
 	font-size: 4rem;
 	font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans',
 		source-sans-pro, sans-serif;
-	font-weight: normal;
+	font-weight: 800;
 	text-align: center;
 }
 

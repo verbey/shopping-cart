@@ -9,7 +9,7 @@ function Navbar({
 }) {
 	return (
 		<nav>
-			<h1>404 Store</h1>
+			<h1 className={styles.documentName}>404 Store</h1>
 			<div className={styles.navbarMenu}>
 				<Link to='/' className={styles.link}>
 					Home
