@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ShoppingItem from './ShoppingItem';
 import { useOutletContext } from 'react-router-dom';
+import styles from '../styles/store.module.css';
 
 interface StoreData {
 	id: number;
@@ -48,12 +49,12 @@ function Store() {
 	}, []);
 
 	return (
-		<main>
+		<main className={styles.storeContainer}>
 			<h2>Store</h2>
 			{loading && <p className='loadingText'>Loading...</p>}
 
 			{storeItems && (
-				<ul>
+				<ul className={styles.storeItemsList}>
 					{storeItems.map((item) => (
 						<li key={item.id}>
 							<ShoppingItem
