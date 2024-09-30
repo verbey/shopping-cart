@@ -2,6 +2,8 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import ValidationSuccessPopUp from './ValidationSuccessPopUp';
 
+import styles from '../styles/checkout.module.css';
+
 interface FormData {
 	cardNumber: string;
 	cvv: string;
@@ -59,17 +61,19 @@ function Checkout() {
 	};
 
 	return (
-		<div>
-			<h2>Credit Card Information</h2>
-			<div>
+		<div className={styles.checkoutContainer}>
+			<h2 className={styles.header}>Credit Card Information</h2>
+			<div className={styles.disclaimer}>
 				<p>
 					This is a fake form. Do not submit any real credit card
 					information.
 				</p>
 			</div>
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor='cardNumber'>Card Number</label>
+				<div className={styles.inputContainer}>
+					<label htmlFor='cardNumber' className={styles.label}>
+						Card Number
+					</label>
 					<input
 						type='text'
 						id='cardNumber'
@@ -77,10 +81,13 @@ function Checkout() {
 						placeholder='1234 5678 9012 3456'
 						value={formData.cardNumber}
 						onChange={handleInputChange}
+						className={styles.input}
 					/>
 				</div>
-				<div>
-					<label htmlFor='cvv'>CVV</label>
+				<div className={styles.inputContainer}>
+					<label htmlFor='cvv' className={styles.label}>
+						CVV
+					</label>
 					<input
 						type='text'
 						id='cvv'
@@ -88,10 +95,13 @@ function Checkout() {
 						placeholder='123'
 						value={formData.cvv}
 						onChange={handleInputChange}
+						className={styles.input}
 					/>
 				</div>
-				<div>
-					<label htmlFor='expirationDate'>Expiration Date</label>
+				<div className={styles.inputContainer}>
+					<label htmlFor='expirationDate' className={styles.label}>
+						Expiration Date
+					</label>
 					<input
 						type='text'
 						id='expirationDate'
@@ -99,10 +109,13 @@ function Checkout() {
 						placeholder='MM/YY'
 						value={formData.expirationDate}
 						onChange={handleInputChange}
+						className={styles.input}
 					/>
 				</div>
-				{error && <p className='errorText'>{error}</p>}
-				<button type='submit'>Submit</button>
+				{error && <p className={styles.errorText}>{error}</p>}
+				<button type='submit' className={styles.submitButton}>
+					Submit
+				</button>
 			</form>
 			{redirectState && <Navigate to='/cart' />}
 			{formValidationStatus && <ValidationSuccessPopUp />}
