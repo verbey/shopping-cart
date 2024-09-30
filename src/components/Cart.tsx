@@ -17,7 +17,8 @@ type ShoppingCartItemsContext = [
 ];
 
 function Cart() {
-	const [shoppingCartItems] = useOutletContext<ShoppingCartItemsContext>();
+	const [shoppingCartItems, setShoppingCartItems] =
+		useOutletContext<ShoppingCartItemsContext>();
 	const totalPrice = shoppingCartItems?.reduce(
 		(accumulator, currentValue) =>
 			accumulator + currentValue.price * currentValue.quantity,
@@ -42,6 +43,13 @@ function Cart() {
 			<div className={styles.totalPrice}>Total: {totalPrice}</div>
 			<button type='button' className={styles.checkoutButton}>
 				Checkout
+			</button>
+			<button
+				type='button'
+				className={styles.checkoutButton}
+				onClick={() => setShoppingCartItems(null)}
+			>
+				Reset
 			</button>
 		</div>
 	);

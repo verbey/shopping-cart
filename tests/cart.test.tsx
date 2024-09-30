@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, test, expect } from 'vitest';
 import React from 'react';
 import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 
 import Cart from '../src/components/Cart';
 
@@ -51,7 +52,24 @@ describe('Cart component', () => {
 		);
 		expect(screen.getByText('Test Item')).toBeInTheDocument();
 	});
-	test('Checkout button takes user to the checkout page', () => {
-		// TODO
+
+	test('Clears the cart when the button is clicked', async () => {
+		const mockOutletContextData: ShoppingCartItemsContext = [
+			[{ title: 'Test Item', quantity: 1, price: 10 }],
+			(items) => {
+				mockOutletContextData[0] = items;
+			},
+		];
+
+		render(
+			<RenderRouteWithOutletContext context={mockOutletContextData}>
+				<Cart />
+			</RenderRouteWithOutletContext>
+		);
+		const resetButton = screen.getByText('Reset');
+		expect(resetButton).toBeInTheDocument();
+
+		await userEvent.click(resetButton);
+		expect(mockOutletContextData[0]).toEqual(null);
 	});
 });
