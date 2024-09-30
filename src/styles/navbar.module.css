@@ -8,6 +8,7 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 16px;
 }
 
 .documentName {
@@ -27,6 +28,7 @@ nav {
 	background-color: var(--secondary);
 	padding: 4px 8px;
 	border-radius: 8px;
+	flex: 1;
 }
 
 .link:hover {
