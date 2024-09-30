@@ -1,6 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
 import ShoppingItem from './ShoppingItem';
 
+import styles from '../styles/cart.module.css';
+import generalStyles from '../styles/infoComponent.module.css';
+
 interface ShoppingCartItems {
 	title: string;
 	image?: string;
@@ -21,8 +24,9 @@ function Cart() {
 		0
 	);
 	return (
-		<div className='cartContainer'>
-			<div className='cartItems'>
+		<div className={styles.cartContainer}>
+			<h2 className={generalStyles.title}>Cart</h2>
+			<div className={styles.shoppingItemContainer}>
 				{shoppingCartItems &&
 					shoppingCartItems.map((item) => (
 						<ShoppingItem
@@ -35,8 +39,10 @@ function Cart() {
 						/>
 					))}
 			</div>
-			<div className='totalPrice'>Total: {totalPrice}</div>
-			<button type='button'>Checkout</button>
+			<div className={styles.totalPrice}>Total: {totalPrice}</div>
+			<button type='button' className={styles.checkoutButton}>
+				Checkout
+			</button>
 		</div>
 	);
 }

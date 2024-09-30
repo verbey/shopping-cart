@@ -1,0 +1,21 @@
+.shoppingItemContainer {
+	composes: storeItemsList from '../styles/store.module.css';
+	justify-content: left;
+}
+
+.cartContainer {
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.totalPrice {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.checkoutButton {
+	width: 10dvw;
+	composes: shoppingCartItemButton from '../styles/shoppingItem.module.css';
+}
