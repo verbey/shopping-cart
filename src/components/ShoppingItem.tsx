@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import styles from '../styles/shoppingItem.module.css';
+
 interface ShoppingCartItems {
 	title: string;
 	image?: string;
@@ -29,21 +31,31 @@ function ShoppingItem(props: ShoppingItemProps) {
 	};
 
 	return (
-		<div>
-			<div className='shoppingItemTitlte'>{props.title}</div>
-			{props.image && <img src={props.image} alt={props.title} />}
+		<div className={styles.shoppingItemContainer}>
+			<div className={styles.shoppingItemTitle}>{props.title}</div>
+			{props.image && (
+				<img
+					className={styles.img}
+					src={props.image}
+					alt={props.title}
+				/>
+			)}
 			<div className='quantity'>Quantity: {quantity}</div>
 			<div className='price'>Price: {props.price}</div>
 			{!props.informationalOnly && (
-				<div className='quantityControlButtons'>
+				<div className={styles.quantityControlButtons}>
 					<button
-						className='increaseQuantity'
+						className={
+							'increaseQuality ' + styles.shoppingCartItemButton
+						}
 						onClick={handleIncreaseQuantityClick}
 					>
 						+
 					</button>
 					<button
-						className='decreaseQuantity'
+						className={
+							'decreaseQuantity ' + styles.shoppingCartItemButton
+						}
 						onClick={handleDecreaseQuantityClick}
 					>
 						-
@@ -52,7 +64,7 @@ function ShoppingItem(props: ShoppingItemProps) {
 			)}
 			{!props.informationalOnly && (
 				<button
-					className='buyButton'
+					className={styles.shoppingCartItemButton}
 					onClick={() => {
 						// That's a pretty cursed function but I'm not really sure how to simplify it
 						// So I let it be. At least, for now. Instead, I'll explain weird moments briefly
