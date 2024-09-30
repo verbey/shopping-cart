@@ -1,5 +1,6 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Navigate } from 'react-router-dom';
 import ShoppingItem from './ShoppingItem';
+import { useState } from 'react';
 
 import styles from '../styles/cart.module.css';
 import generalStyles from '../styles/infoComponent.module.css';
@@ -17,6 +18,7 @@ type ShoppingCartItemsContext = [
 ];
 
 function Cart() {
+	const [checkoutButtonState, setCheckoutButtonState] = useState(false);
 	const [shoppingCartItems, setShoppingCartItems] =
 		useOutletContext<ShoppingCartItemsContext>();
 	const totalPrice = shoppingCartItems?.reduce(
@@ -24,6 +26,10 @@ function Cart() {
 			accumulator + currentValue.price * currentValue.quantity,
 		0
 	);
+	const handleClick = () => {
+		if (shoppingCartItems?.length) setCheckoutButtonState(true);
+		return null;
+	};
 	return (
 		<div className={styles.cartContainer}>
 			<h2 className={generalStyles.title}>Cart</h2>
@@ -41,7 +47,11 @@ function Cart() {
 					))}
 			</div>
 			<div className={styles.totalPrice}>Total: {totalPrice}</div>
-			<button type='button' className={styles.checkoutButton}>
+			<button
+				type='button'
+				className={styles.checkoutButton}
+				onClick={handleClick}
+			>
 				Checkout
 			</button>
 			<button
@@ -51,6 +61,7 @@ function Cart() {
 			>
 				Reset
 			</button>
+			{checkoutButtonState && <Navigate to='/cart/checkout' />}
 		</div>
 	);
 }
