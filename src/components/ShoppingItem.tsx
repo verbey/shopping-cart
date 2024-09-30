@@ -56,7 +56,9 @@ function ShoppingItem(props: ShoppingItemProps) {
 						className={
 							'decreaseQuantity ' + styles.shoppingCartItemButton
 						}
-						onClick={handleDecreaseQuantityClick}
+						onClick={() => {
+							if (quantity > 1) handleDecreaseQuantityClick();
+						}}
 					>
 						-
 					</button>
