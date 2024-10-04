@@ -1,3 +1,9 @@
+@media (max-width: 450px) {
+	.navbarMenu {
+		flex-wrap: wrap;
+	}
+}
+
 nav {
 	padding: 8px;
 	display: flex;
