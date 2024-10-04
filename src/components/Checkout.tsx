@@ -64,12 +64,12 @@ function Checkout() {
 		<div className={styles.checkoutContainer}>
 			<h2 className={styles.header}>Credit Card Information</h2>
 			<div className={styles.disclaimer}>
-				<p>
+				<p className={styles.text}>
 					This is a fake form. Do not submit any real credit card
 					information.
 				</p>
 			</div>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className={styles.form}>
 				<div className={styles.inputContainer}>
 					<label htmlFor='cardNumber' className={styles.label}>
 						Card Number

@@ -3,6 +3,7 @@
 	border-radius: 8px;
 	border: 1px solid var(--secondary);
 	outline: none;
+	flex: 1;
 }
 
 .input:focus {
@@ -13,6 +14,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	width: max(40dvw, 300px);
+}
+
+.form div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	width: 100%;
 }
 
 .errorText {
@@ -22,7 +31,8 @@
 }
 
 .submitButton {
-	width: 10dvw;
+	width: max(10dvw, 100px);
+	align-self: center;
 	composes: shoppingCartItemButton from '../styles/shoppingItem.module.css';
 }
 
@@ -34,6 +44,11 @@
 .header {
 	font-size: 2.5rem;
 	font-weight: 800;
+	text-align: center;
+}
+
+.text {
+	text-align: center;
 }
 
 .checkoutContainer {
