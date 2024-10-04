@@ -49,14 +49,14 @@ function Cart() {
 			<div className={styles.totalPrice}>Total: {totalPrice}</div>
 			<button
 				type='button'
-				className={styles.checkoutButton}
+				className={styles.button}
 				onClick={handleClick}
 			>
 				Checkout
 			</button>
 			<button
 				type='button'
-				className={styles.checkoutButton}
+				className={styles.button}
 				onClick={() => setShoppingCartItems(null)}
 			>
 				Reset

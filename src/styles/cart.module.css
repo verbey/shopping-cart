@@ -15,7 +15,7 @@
 	font-weight: 700;
 }
 
-.checkoutButton {
-	width: 10dvw;
+.button {
+	width: max(10dvw, 100px);
 	composes: shoppingCartItemButton from '../styles/shoppingItem.module.css';
 }
