@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# Shopping Cart Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This application lets the user interact with a fake store. There are 4 pages in total: Home, Store, Cart and About. Home provides some placeholder text and serves as a showcase of CSS scroll snap. Store page fetches items from the Fake Store API and lets the user put them into the cart. The Navbar component will be updated with a new number of items currently in the cart. The Cart page lets the user see the items they have in the cart at the moment and has 2 links for either going to the checkout page if the cart is not empty, or resetting the cart. The About page links you to this repository. Made as a part of [the Odin Project course](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Code
 
-## Expanding the ESLint configuration
+The code is pushed to both [Codeberg](https://codeberg.org/Verbiturum/shopping-cart) and [Github](https://github.com/verbey/shopping-cart).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Live demo
 
-- Configure the top-level `parserOptions` property like this:
+You can see the live version [here](https://404-store-shopping-cart.netlify.app/store).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+-   Single page routing.
+-   Data fetched from the [Fake Store API](https://fakestoreapi.com/).
+-   Pleasing pastel color palette.
+-   CSS scroll snap for the Home page.
+-   Responsive desing.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Technologies used
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. HTML
+2. CSS
+3. JavaScript/TypeScript
+4. React
+5. Vite
+6. Vitest
+7. Testing Library
+8. React Router
+
+## Setup instructions
+
+1. Open terminal in the directory you want to clone this into.
+2. Run `git clone https://codeberg.org/Verbiturum/shopping-cart.git`.
+3. `cd` into the cloned repository with `cd shopping-cart`.
+4. Run `npm install` to install dependencies.
+5. Run `npm run dev` to build the project.
+6. Open the link from the output in your terminal.
+
+## Third-party credits
+
+-   [Fake Store API](https://fakestoreapi.com/)
