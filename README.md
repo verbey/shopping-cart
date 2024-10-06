@@ -10,7 +10,7 @@ The code is pushed to both [Codeberg](https://codeberg.org/Verbiturum/shopping-c
 
 ## Live demo
 
-You can see the live version [here](https://404-store-shopping-cart.netlify.app/store).
+You can see the live version [here](https://404-store-shopping-cart.netlify.app/).
 
 ## Features
 
